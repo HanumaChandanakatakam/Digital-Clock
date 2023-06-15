@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+   <title>Digital Clock</title>
+   <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="display">
+   <div id="clockDisplay"></div>
+   </div>
+   <script>
+      function updateClock() {
+         let date = new Date();
+         let hours = date.getHours();
+         let minutes = date.getMinutes();
+         let seconds = date.getSeconds();
+         let day_night = "AM";
+         if (hours > 12) {
+            hours = hours-12;
+
+            day_night = "PM";
+         }
+         if (hours === 0) {
+            hours = 12;
+         }
+         if (minutes < 10) {
+            minutes = "0" + minutes;
+         }
+         if (seconds < 10) {
+            seconds = "0" + seconds;
+         }
+         let time = hours + ":" + minutes + ":" + seconds + " " + day_night;
+         document.getElementById("clockDisplay").innerHTML = time;
+      }
+      setInterval(updateClock, 1000);
+   </script>
+</body>
+</html>
